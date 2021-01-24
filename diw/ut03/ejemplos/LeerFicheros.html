@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #zona_DnD{
+            width: 200px;
+            height: 200px;
+            border: 2px dashed black;
+            text-align: center;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="fichero" name="files[]" multiple/>
+    <div>
+        <ul id="lista"></ul>
+    </div>
+    <div id="contenido"></div>
+    <h3>Arrastra aquí los ficheros...</h3>
+    <div id="zona_DnD"></div>
+    <div>
+        <ul id="lista2"></ul>
+    </div>
+    <img src="" alt="" id="imagen">
+    <script>
+        //Asignamos al evento change del input, así cuando se seleccionen los ficheros 
+        //sabremos cuales han sido para tratar.
+        document.getElementById("fichero").addEventListener('change',manejadorSeleccionar);
+
+        //Asignamos dos eventos al cuadrado donde arrastrar ficheros uno para cuando pase por
+        //enciama y el otro para cuando suelte
+        document.getElementById('zona_DnD').addEventListener('dragover',manejadorDragOver);
+        document.getElementById('zona_DnD').addEventListener('drop',manejadorDrop);
+
+        function manejadorSeleccionar(e){
+            var files=e.target.files; //Objeto lista de ficheros seleccionados.
+
+            //Creamos un array donde estará la informacion que mostraremos en pantalla
+            var salida=[];
+            for (let f of files ){
+                salida.push(`<li><strong>${f.name}</strong> ${f.size} bytes ${f.type}</li>`);
+                //leerF(f);
+                //leerImagen(f);
+                leerArrayByte(f);
+            }
+            document.getElementById('lista').innerHTML=salida.join("");
+        }
+
+
+
+        function manejadorDragOver(e){
+            e.stopPropagation();
+            e.preventDefault();
+            e.dataTransfer.dropEffect="copy";
+           
+        }
+        function manejadorDrop(e){
+            e.stopPropagation();
+            e.preventDefault();
+
+            alert("hola");
+            var files=e.dataTransfer.files;
+            let salida=[];
+            for (let f of files ){
+                salida.push(`<li><strong>${f.name}</strong> ${f.size} bytes ${f.type}</li>`);
+            }
+            document.getElementById('lista2').innerHTML=salida.join("");
+
+        }
+
+        /* Mostrar el contendido fichero de texto*/
+
+        function leerF(fichero){
+           
+            var reader=new  FileReader();
+
+            reader.addEventListener('load',function(e){
+                var texto=e.target.result;
+                document.getElementById('contenido').innerHTML=texto;
+            })
+            
+            reader.readAsText(fichero);
+        }
+
+
+        /* mostrar el contenido de una mimagen*/
+        function leerImagen(fichero){
+            var reader=new FileReader();
+
+            reader.addEventListener('load',function(e){
+                let dataURL =reader.result;
+                let Eimagen=document.getElementById('imagen');
+
+                Eimagen.src=dataURL;
+            })
+
+            reader.readAsDataURL(fichero);
+        }
+        /* leer el fichero como una array de byte y lo mostramos por la consola*/
+        function leerArrayByte(fichero){
+            var reader=new FileReader();
+
+            reader.addEventListener('load',function(e){
+                let arrayBuffer =reader.result;
+                console.log(arrayBuffer.byteLength);
+
+               
+            })
+
+            reader.readAsArrayBuffer(fichero);
+        }
+
+    </script>
+</body>
+</html>
