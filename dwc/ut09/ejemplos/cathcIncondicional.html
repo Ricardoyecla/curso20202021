@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function logMyErrors(e){
+            console.log(e.name + ': ' + e.message)
+        }
+       try {   
+	        throw new Error('Ufff'); // genera una excepción
+        }
+        catch (e) {
+        // sentencias para manejar cualquier excepción
+        logMyErrors(e); // pasa el objeto de la excepción al manejador de errores
+        }
+    </script>
+</body>
+</html>

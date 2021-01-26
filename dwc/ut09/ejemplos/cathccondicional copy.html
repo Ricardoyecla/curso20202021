@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function myroutine(){
+            let x=parseInt(Math.random()*5)+1;
+            var errores=[];
+            errores.push(new EvalError('1'));
+            errores.push(new RangeError('2'));
+            errores.push(new ReferenceError('3'));
+            errores.push(new TypeError('4'));
+            errores.push(new URIError('5'));
+            console.log(x);
+            throw errores[x];
+        }
+        function logMyErrors(e){
+            console.log(e.name + ': ' + e.message)
+        }
+        try {
+            myroutine();  // puede lanzar tres tipos de excepciones
+        } catch (e) {
+            if (e instanceof TypeError) {
+                // sentencias para manejar excepciones TypeError
+                console.log("Error de tip",e.name);
+            } else if (e instanceof RangeError) {
+                // sentencias para manejar excepciones RangeError
+                console.log("Error de valor",e.name);
+            } else if (e instanceof EvalError) {
+                // sentencias para manejar excepciones EvalError
+                console.log("Error de Evaluación",e.name);
+            } else {
+            // sentencias para manejar cualquier excepción no especificada
+            logMyErrors(e); // pasa el objeto de la excepción al manejador de errores
+            }
+        }
+    </script>
+</body>
+</html>
