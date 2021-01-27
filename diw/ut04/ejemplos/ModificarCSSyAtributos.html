@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <title>Document</title>
+
+</head>
+<body>
+    <div>
+        <h1>Lo quita</h1>
+        <h1>Lo quita</h1>
+        <h2>No se ve la etiqueta</h2>
+        <h2>No se ve la etiqueta</h2>
+        <input type="password">
+    </div>
+    <script>
+        $(document).ready(function(){
+            //Modificar css de una etiqueta forma1
+            $('h1').css("color","blue");
+            $('h1').css("color","blue").css("text-align","center");
+            ///Modificar css de una etiqueta forma2
+            $('h2').css({backgroundColor:"yellow",fontSize:"0.75em"});
+
+            //Modificar atributos de una etiqueta
+
+            $('input').attr("type","text").attr("disabled","true");
+           
+        });
+    </script>
+</body>
+</html>
