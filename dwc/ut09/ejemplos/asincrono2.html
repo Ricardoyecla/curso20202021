@@ -26,18 +26,20 @@
         //Ejemplo código asincrono.
         //Imaginamos que la consulta se hace a una api o otro servicio que se demora
         //lo vamos a simular de la siguiente forma con setTimeOut
-        var salida;
-
+  
         const getDatos = () =>{
-            setTimeout(()=>{
-                salida=datos;
-            },1500);
+            return new Promise((res,rej)=>{
+                    setTimeout(()=>{
+                        res(datos);
+                },1500);
+            });
+            
         } 
         //Nos devuelve undefined
-        
-        console.log(getDatos());
-        alert(salida);
-        
+        //El then representa la función callback res que le pasamos a la promesa.
+
+        getDatos().then((datos)=>console.log(datos));
+                
     </script>
 </body>
 </html>
