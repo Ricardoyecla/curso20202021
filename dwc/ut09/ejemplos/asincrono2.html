@@ -7,7 +7,6 @@
 </head>
 <body>
     <script>
-<<<<<<< HEAD
         const usuarios=[
             {id:1,nombre:'ricardo',profesion_id:1},
             {id:2,nombre:'daniel',profesion_id:1},
@@ -54,41 +53,6 @@
             })
         })
 
-=======
-        const datos=[{
-            id:1,
-            titulo:'Breakfast in America',
-            year: 1979
-            }, {
-                id:2,
-            titulo:'Automatic for the People',
-            year: 1992  
-            }, {
-                id:3,
-            titulo:'Alchemy: Dire Straits Live',
-            year: 1984  
-        }];
-
-       
-
-        //Ejemplo código asincrono.
-        //Imaginamos que la consulta se hace a una api o otro servicio que se demora
-        //lo vamos a simular de la siguiente forma con setTimeOut
-  
-        const getDatos = () =>{
-            return new Promise((res,rej)=>{
-                    setTimeout(()=>{
-                        res(datos);
-                },1500);
-            });
-            
-        } 
-        //Nos devuelve undefined
-        //El then representa la función callback res que le pasamos a la promesa.
-
-        getDatos().then((datos)=>console.log(datos));
-                
->>>>>>> 9bbc20eebf6b1a96a105ca1f192bc47dfd9face4
     </script>
 </body>
 </html>
