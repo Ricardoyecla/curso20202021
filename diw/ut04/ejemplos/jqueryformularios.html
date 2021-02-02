@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<title>Title</title>
+</head>
+<style>
+    #contenedor{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        border: black 1px solid; 
+    }
+    #lista{
+        border: black 1px solid; 
+        flex-basis: 55%;
+    }
+    #formulario{
+        text-align: center;
+        border: 1px solid orange; 
+        flex-basis: 30%;
+    }
+    .fila { 
+        border: black 1px solid; 
+        display: flex; 
+        
+    }
+    p,h5 { 
+        flex-basis: 14%; 
+        text-align: center;
+        padding: 2px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .botones{
+        flex-basis: 45%; 
+    }
+    .seleccionada{
+        background-color:palegoldenrod;
+    }
+    label,input{
+        margin-left: 10px;
+        text-align: left;
+        display: block;
+    }
+    fieldset button{
+        float: left;
+
+        margin: 10px;
+    }
+
+    
+  </style>
+<body>
+    <div id="contenedor">
+        <div id="lista">
+            <div class="fila">
+                <h5>Número </h5>
+                <h5>Jugador  </h5>
+                <h5>Puntos</h5>
+                <h5 class="botones">Botones</h5>
+            </div>
+            <div class="fila">
+                <p>1 </p>
+                <p>Pedro Martínez</p>
+                <p>5</p>
+                <p class="botones">
+                    <button class="bSeleccionar">Seleccionar</button>
+                    <button class="bBorrar" disabled>Borrar</button>
+                </p>
+            </div>
+            <div class="fila">
+                <p>2 </p>
+                <p>Joan Pine</p>
+                <p>5</p>
+                <p class="botones">
+                    <button class="bSeleccionar">Seleccionar</button>
+                    <button class="bBorrar" disabled="true">Borrar</button>
+                </p>
+            </div>
+        </div>
+        <div id="formulario">
+            <fieldset>
+                <label for="">Nombre</label>
+                <input type="text" name="" id="1">
+                 <label for="">Dorsal</label>
+                <input type="text" name="" id="2">
+                <button class="bAnadir">Añadir</button>
+                <button>Borrar</button>
+            </fieldset>
+            
+            <fieldset>
+                <label for="">Puntos</label>
+                <input type="text">
+                <button>Actualizar</button>
+                <button>De uno</button>
+                <button>De dos</button>
+                <button>Triple</button>
+            </fieldset>
+           
+        </div>
+    </div>
+    <script>
+        var $Seleccionado=null;
+        $(document).ready(function(){
+            $('.bSeleccionar').click( function (){
+                    $(this).parent().parent().addClass('seleccionada');
+                    $(this).next().removeAttr('disabled');
+                    $Seleccionado= $(this).parent().parent();
+                });
+            $('.bBorrar').click( function (){                  
+                    if ($(this).parent().parent().children().text()==$Seleccionado.children().text()){
+                        $(this).parent().parent().children().remove();
+                    }
+                });
+
+            $('.bAnadir').on("click",function(){
+               
+                $('#lista').append(`
+                    <div class="fila">
+                        <p>2 </p>
+                        <p>Joan Pine</p>
+                        <p>5</p>
+                        <p class="botones">
+                            <button class="bSeleccionar">Seleccionar</button>
+                            <button class="bBorrar" disabled="true">Borrar</button>
+                        </p>
+                    </div>`);
+
+                $('.bSeleccionar').on("click", function (){
+                    $(this).parent().parent().addClass('seleccionada');
+                    $(this).next().removeAttr('disabled');
+                    $Seleccionado= $(this).parent().parent();
+                });
+                $('.bBorrar').on("click", function (){
+                    if ($(this).parent().parent().children().text()==$Seleccionado.children().text()){
+                        $(this).parent().parent().children().remove();
+                       
+                    }
+                });
+            })
+        });
+    </script>
+</body>
+</html>

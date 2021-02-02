@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Asincrono3.html</title>
+</head>
+<body>
+    <script>
+        const usuarios=[
+            {id:1,nombre:'ricardo',profesion_id:1},
+            {id:2,nombre:'daniel',profesion_id:1},
+            {id:3,nombre:'antonio',profesion_id:2}
+        ]
+        const profesion={
+            1:'programador',
+            2:'diseñador'
+        }
+        
+        function getUsuarios(){
+            return new Promise((resolved,reject)=>{
+                setTimeout(()=>{
+                    resolved(usuarios)
+                },200)
+            })
+        }
+        
+        
+        function getUsuario(id){
+            //resolved resulta
+            //reject rechazada
+            return new Promise((resolved,reject)=>{
+                setTimeout(()=>{
+                    let arrayFiltrado= usuarios.filter((usuario)=>usuario.id===id);
+                    let usuario=arrayFiltrado[0];
+                    alert(usuario.nombre," ",usuario.id);
+                        resolved(usuario)
+                    },200)
+            })
+            
+        }
+        function getProfesion(id){
+            return new Promise((resolved,reject)=>{
+                setTimeout(()=>{
+                    let nombreProfesion=profesion[id];
+                    resolved(nombreProfesion)
+                },200)
+            })
+        }
+
+      /* getProfesion(1)
+        .then((nombreProfesion)=>console.log(nombreProfesion))
+        getProfesion(2)
+        .then((profesionN)=>console.log(profesionN))
+        
+        // Tardaría 200 + 200
+        */
+
+    
+
+    Promise.all([getProfesion(1),getProfesion(2)])
+        .then((respuesta)=>console.log(respuesta))
+
+        /*Así tardaría 200*/
+
+    </script>
+</body>
+</html>

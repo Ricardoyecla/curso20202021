@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const usuarios=[
+            {id:1,nombre:'ricardo',profesion_id:1},
+            {id:2,nombre:'daniel',profesion_id:1},
+            {id:3,nombre:'antonio',profesion_id:2}
+        ]
+        const profesion={
+            1:'programador',
+            2:'diseñador'
+        }
+        
+        function getUsuarios(callback){
+            setTimeout(()=>{
+                callback(usuarios)
+            },200)
+        }
+        //getUsuarios((err,usuariosDevueltos)=>console.log(usuariosDevueltos));
+        
+        function getUsuario(id,callback){
+            setTimeout(()=>{
+                let arrayFiltrado= usuarios.filter((usuario)=>usuario.id===id);
+                let usuario=arrayFiltrado[0];
+                alert(usuario.id);
+                callback(usuario)
+            },200)
+        }
+        function getProfesion(id,callback){
+            setTimeout(()=>{
+                let nombreProfesion=profesion[id];
+                callback(nombreProfesion)
+            },200)
+        }
+
+        getUsuarios((usuariosDevueltos)=>{
+
+            //De todos los usuairos ahora busco el id de antonio.
+            const usuarioId=usuariosDevueltos[2].id;
+
+            getUsuario(usuarioId,(usuarioDevuelto)=>{
+                const profesioId=usuarioDevuelto.profesion_id;
+
+                getProfesion(profesioId,(nombreProfesionDevuelta)=>{
+                    console.log('La profesión es', nombreProfesionDevuelta)
+                })
+            })
+        })
+
+    </script>
+</body>
+</html>

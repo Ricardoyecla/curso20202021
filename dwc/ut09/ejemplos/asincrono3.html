@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Asincrono3.html</title>
+</head>
+<body>
+    <script>
+        const usuarios=[
+            {id:1,nombre:'ricardo',profesion_id:1},
+            {id:2,nombre:'daniel',profesion_id:1},
+            {id:3,nombre:'antonio',profesion_id:2}
+        ]
+        const profesion={
+            1:'programador',
+            2:'diseñador'
+        }
+        
+        function getUsuarios(){
+            return new Promise((resolved,reject)=>{
+                setTimeout(()=>{
+                    resolved(usuarios)
+                },200)
+            })
+        }
+        
+        
+        function getUsuario(id){
+            //resolved resulta
+            //reject rechazada
+            return new Promise((resolved,reject)=>{
+                setTimeout(()=>{
+                    let arrayFiltrado= usuarios.filter((usuario)=>usuario.id===id);
+                    let usuario=arrayFiltrado[0];
+                    alert(usuario.nombre," ",usuario.id);
+                        resolved(usuario)
+                        //reject('Error total');
+                    },200)
+            })
+            
+        }
+        function getProfesion(id){
+            return new Promise((resolved,reject)=>{
+                setTimeout(()=>{
+                    let nombreProfesion=profesion[id];
+                    resolved(nombreProfesion)
+                },200)
+            })
+        }
+
+        //los usuairos que estan dentro de .then(usuarios) son los que se pasaron el 
+        //resolved(usuarios) de la promesa de getUsuairos
+        getUsuarios()
+            .then((usuarios)=>getUsuario(usuarios[2].id))
+            .then((usuario)=>getProfesion(usuario.profesion_id))
+            .then((profesion)=>console.log('la profesión de daniel es', profesion))
+            .catch((er)=>{console.log('error en indice',er)});
+           
+
+        //Pido la lista de usuarios y espero a recibir para pedir un usuario según su id.
+        //Cuando recibo el usuario pido su nombre de profesión usando el código de profesión y espero.
+        //Cuando lo recibo muestro
+
+        /* getUsuarios((usuariosDevueltos)=>{
+            //De todos los usuairos ahora busco el id de antonio.
+            const usuarioId=usuariosDevueltos[2].id;
+
+            getUsuario(usuarioId,(usuarioDevuelto)=>{
+                const profesioId=usuarioDevuelto.profesion_id;
+
+                getProfesion(profesioId,(nombreProfesionDevuelta)=>{
+                    console.log('La profesión es', nombreProfesionDevuelta)
+                })
+            })
+        })
+ */
+    </script>
+</body>
+</html>

@@ -2,63 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+
     <title>Document</title>
 </head>
 <body>
     <script>
-        const datos=[{
-            id:1,
-            titulo:'Breakfast in America',
-            year: 1979
-            }, {
-                id:2,
-            titulo:'Automatic for the People',
-            year: 1992  
-            }, {
-                id:3,
-            titulo:'Alchemy: Dire Straits Live',
-            year: 1984  
-        }];
-
-        //Ejemplo código sincrono. 
-        //Hasta que no se ejecuta una sentencia no se pasa a la siguiente.
-        /*const getDatos=()=>{
-            return datos;
+        function sumar(n1,n2,callback){
+            callback(n1+n2);
         }
-        console.log(getDatos());*/
 
-        //Ejemplo código asincrono.
-        //Imaginamos que la consulta se hace a una api o otro servicio que se demora
-        //lo vamos a simular de la siguiente forma con setTimeOut
-
-      /*   const getDatos = () =>{
-            setTimeout(()=>{
-                return datos;
-            },1500);
-        } 
-        //Nos devuelve undefined
-        console.log(getDatos());
-        
-        */
-
-        //Solucion con promesas.
-
-        const getDatos = () =>{
-            setTimeout(()=>{
-                return datos;
-            },1500);
-        } 
-
-        console.log(getDatos());
-
-        getDatos=traeDatos;
-
-        function traerDatos(){
-            setTimeout(() => {
-                
-            }, timeout);
+        function cuadrado(num,callback){
+            callback(num*num);
         }
+        function dividir(num,callback){
+            callback(num/2);
+        }
+        function restar(num,callback){
+            callback(num-100);
+        }
+        sumar(8,5,function(resultadoSumar){
+            console.log("Suma de 2 numeros", resultadoSumar);
+            cuadrado(resultadoSumar,function(resultadoCuadrado){
+                console.log("cuadrado de la suma", resultadoCuadrado);
+                dividir(resultadoCuadrado,function(resutltadoDividir){
+                    console.log("la mitad del cuadrado es",resutltadoDividir);
+                    restar(resutltadoDividir,function(resultadoDeRestrar){
+                        console.log("la resta del número es",resultadoDeRestrar);
+                    });
+                });
+            });
+        });
     </script>
 </body>
 </html>
