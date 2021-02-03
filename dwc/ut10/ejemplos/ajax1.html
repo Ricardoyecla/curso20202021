@@ -6,6 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h2 id="info"></h2>
+    <script>
+        let info=document.getElementById('info');
+
+        function MuestraInfo(texto){
+            document.getElementById('info').textContent=texto;
+        }
+        fetch("https://jorgesanchez.net/servicios/nifaleatorio.php")
+            .then(res=>res.text())
+            .then(texto=>MuestraInfo(texto))
+            
+    </script>
 </body>
 </html>
