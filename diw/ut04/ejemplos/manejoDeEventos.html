@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+
+        .grande{
+            font-size: 2em;
+            color: red;
+        }
+             
+    </style>
+
+</head>
+<body>
+    <div>
+        <h1>Lo quita</h1>
+        <h1>Lo quita</h1>
+        <h2>No se ve la etiqueta</h2>
+        <h2>No se ve la etiqueta</h2>
+        <input type="text">
+        <button>Añadir</button>
+        <p id="ua">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo eos veniam ipsa excepturi minima, nihil labore eius et magnam unde beatae id molestias porro suscipit eveniet nobis voluptatum dignissimos aspernatur.</p>
+        <ul>
+
+        </ul>
+    </div>
+    <script>
+        $(document).ready(function(){
+           let parrafo=$("#ua");
+
+           parrafo.click((e)=>{
+               parrafo.addClass('grande');
+           });
+           parrafo.dblclick((e)=>{
+               
+               parrafo.toggleClass('grande');
+           });
+           
+           $("input").keyup(function(){
+               parrafo.html($("input").val());
+           });
+           $('button').click(function(){
+              $('ul').append(`<li>${$('input').val()} <button class="b1">eliminar</li>`);
+                $(".b1").click((e)=>{
+                   e.target.parentElement.remove();
+                })
+            });
+           
+    
+        });
+    </script>
+</body>
+</html>
