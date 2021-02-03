@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Asincrono3.html</title>
+</head>
+<body>
+    <script>
+        const usuarios=[
+            {id:1,nombre:'ricardo',profesion_id:1},
+            {id:2,nombre:'daniel',profesion_id:1},
+            {id:3,nombre:'antonio',profesion_id:2}
+        ]
+        const profesion={
+            1:'programador',
+            2:'diseñador'
+        }
+        
+        function getUsuarios(){
+            return new Promise((resolved,reject)=>{
+                setTimeout(()=>{
+                    resolved(usuarios)
+                },200)
+            })
+        }
+        
+        
+        function getUsuario(id){
+            //resolved resulta
+            //reject rechazada
+            return new Promise((resolved,reject)=>{
+                setTimeout(()=>{
+                    let arrayFiltrado= usuarios.filter((usuario)=>usuario.id===id);
+                    let usuario=arrayFiltrado[0];
+                    alert(usuario.nombre," ",usuario.id);
+                        resolved(usuario)
+                        //reject('Error total');
+                    },200)
+            })
+            
+        }
+        function getProfesion(id){
+            return new Promise((resolved,reject)=>{
+                setTimeout(()=>{
+                    let nombreProfesion=profesion[id];
+                    resolved(nombreProfesion)
+                },1200)
+            })
+        }
+
+        //los usuairos que estan dentro de .then(usuarios) son los que se pasaron el 
+        //resolved(usuarios) de la promesa de getUsuairos
+
+        async function DevolverProfesión(){
+            let usuarios=await getUsuarios();
+            let usuario=await getUsuario(usuarios[2].id);
+            let profesion=await getProfesion(usuario.profesion_id);
+            console.log(profesion);
+            return profesion
+        }
+        
+        DevolverProfesión();
+        //console.log(DevolverProfesión());
+
+    </script>
+</body>
+</html>
