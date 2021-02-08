@@ -14,25 +14,7 @@
       margin:12px 12px 20px 0;
     }
   </style>
-  <script>
-  $( function() {
-    
-    $( "#dialog-confirm" ).dialog({ 
-      resizable: false,
-      height: "auto",
-      width: 400,
-      modal: true,
-      buttons: {
-        "Si salir": function() {
-          $( this ).dialog( "close" );
-        },
-        Cancel: function() {
-          $( this ).dialog( "close" );
-        }
-      }
-    });
-  } );
-  </script>
+ 
 </head>
 <body>
  
@@ -43,6 +25,30 @@
 <p>Hola picha <a href="https://www.google.es">aquí para ir a google</a>. 
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, reiciendis.</p>
  
- 
+  <script>
+    $( function() {
+      $( "a" ).click(function( event ) {
+        event.preventDefault();
+        $( "#dialog-confirm" ).dialog("open");
+      });
+
+      $( "#dialog-confirm" ).dialog({ 
+        autoOpen: false,
+        resizable: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        buttons: {
+          "Si salir": function() {
+            $( this ).dialog( "close" );
+            location="https://www.google.es";
+          },
+          Cancel: function() {
+            $( this ).dialog( "close" );
+          }
+        }
+      });
+    } );
+    </script>
 </body>
 </html>
