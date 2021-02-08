@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" name="files[]">
+    <p>contenido</p>
+    <script>
+
+        document.querySelector('input').addEventListener('change',DevolverTexto);
+        let ContenidoFichero;
+       
+        function leerFichero(e){
+            return new Promise((res,rej)=>{
+                let fichero=e.target.files[0];
+                let lector=new FileReader()
+
+                lector.addEventListener('load',function(e){
+                    let texto=e.target.result;
+                    res(texto);
+                    document.querySelector('p').textContent=texto;
+                })
+
+                lector.readAsText(fichero)
+            })    
+        }
+
+        async function DevolverTexto(e){
+             ContenidoFichero =await leerFichero(e); 
+            console.log(ContenidoFichero);
+        }
+        
+        
+    </script>
+</body>
+</html>
