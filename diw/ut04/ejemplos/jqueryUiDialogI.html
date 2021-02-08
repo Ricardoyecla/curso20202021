@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Dialog - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+
+  
+  $( function() {
+    //  Se abre sin más
+    //  $( "#dialog" ).dialog();
+
+    //Este formujlario es redimensionable
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {effect: "blind", duration: 1000 },
+      hide: {effect: "explode",duration: 1000
+      }
+    });
+ 
+    $( "#abrirD" ).on( "click", function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+
+  } );
+
+
+
+  </script>
+</head>
+<body>
+  <div>
+    <input type="text" name="" id="">
+    <ul>
+      <li>lorem</li>
+      <li>lorem</li>
+      <li>lorem</li>
+      <li>lorem</li>
+    </ul>
+  </div>
+  <button id="abrirD" class="ui-button ui-widget ui-corner-all ">Abrir</button>
+ 
+<div id="dialog" title="Dialog básico">
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+    Deleniti dolor quos hic. &apos;x&apos; icon.</p>
+</div>
+ 
+ 
+</body>
+</html>
