@@ -24,11 +24,15 @@
  
 <p>Hola picha <a href="https://www.google.es">aquí para ir a google</a>. 
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, reiciendis.</p>
+
  
   <script>
+    let queHref;
+
     $( function() {
       $( "a" ).click(function( event ) {
         event.preventDefault();
+        queHref=event.target.getAttribute('href');
         $( "#dialog-confirm" ).dialog("open");
       });
 
@@ -41,7 +45,7 @@
         buttons: {
           "Si salir": function() {
             $( this ).dialog( "close" );
-            location="https://www.google.es";
+            location=queHref;
           },
           Cancel: function() {
             $( this ).dialog( "close" );

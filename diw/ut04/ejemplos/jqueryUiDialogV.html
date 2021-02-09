@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Dialog - Modal confirmation</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   
+</head>
+<body>
+  <p id="datos"></p>
+  <div id="add_dialog" title="Nueva entrada">
+    <form>
+      <p>
+        Nombre:
+        <input id="nombre" type="text" name="nombre" />
+      </p>
+      <p>
+        Apellido:
+        <input id="apellidos" type="text" name="apellidos" />
+      </p>
+    </form>
+   
+  </div>
+
+ 
+  <script>
+    
+    $( function() {
+      $('#add_dialog').dialog({
+        modal: true,
+        overlay: {
+          opacity: 0.7,
+          background: "yellow"
+        },
+
+        buttons: {
+          "ADD": function() {
+            $('#datos').append($('#nombre').val());
+            $(this).dialog('close');
+          },
+          "CANCEL": function() {
+            $(this).dialog('close');
+           
+          }
+        }
+      });
+    });
+
+     
+    </script>
+</body>
+</html>
