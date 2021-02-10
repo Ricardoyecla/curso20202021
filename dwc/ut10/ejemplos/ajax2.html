@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id='info'></h2>
+    <ul>
+
+    </ul>
+    <script>
+
+        let info=document.getElementById('info');
+
+        fetch('https://jorgesanchez.net/servicios/nifaleatorio.php')
+        .then(res=>{
+            if (res.ok){
+                return res.json()
+            } else {
+                throw new Error("los datos no llegan bien");
+            }
+        })
+        .then(listaNif=>{
+            let lista=document.getElementsByTagName('ul')[0];
+            for (let dni of listaNif){
+                let li=document.createElement('li');
+                li.innerHTML=`<strong>tipo:</strong> ${dni.tipo}<strong> numero:</strong> ${dni.numero}`;
+                lista.appendChild(li);
+
+            }
+            
+        })
+        .catch(er=>{
+            console.log("error ",er);
+        });
+
+
+       
+
+        
+    </script>
+    
+</body>
+</html>
+
+
