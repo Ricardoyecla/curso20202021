@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,43 +7,54 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <style>
-  #draggable { width: 16em; padding: 0 1em; }
-  #draggable ul li { margin: 1em 0; padding: 0.5em 0; }   
-  #draggable ul li span.ui-icon { float: left; }
-  #draggable ul li span.count { font-weight: bold; }
+  #draggable { 
+      width: 16em; 
+      padding: 0 1em; 
+  }
+  #draggable ul li { 
+    margin: 1em 0; 
+    padding: 0.5em 0; 
+  }   
+  #draggable ul li span.ui-icon { 
+    float: left; 
+  }
+  #draggable ul li span.count { 
+    font-weight: bold; 
+  }
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
   $( function() {
-    var $start_counter = $( "#event-start" ),
-      $drag_counter = $( "#event-drag" ),
-      $stop_counter = $( "#event-stop" ),
-      counts = [ 0, 0, 0 ];
+    var $start_contador = $( "#evento-start" ),
+      $drag_contador = $( "#evento-drag" ),
+      $stop_contador = $( "#evento-stop" ),
+      contador = [ 0, 0, 0 ];
  
     $( "#draggable" ).draggable({
       start: function() {
-        counts[ 0 ]++;
-        updateCounterStatus( $start_counter, counts[ 0 ] );
+        contador[ 0 ]++;
+        actualizaEstadoContadores( $start_contador, contador[ 0 ] );
       },
       drag: function() {
-        counts[ 1 ]++;
-        updateCounterStatus( $drag_counter, counts[ 1 ] );
+        contador[ 1 ]++;
+        actualizaEstadoContadores( $drag_contador, contador[ 1 ] );
       },
       stop: function() {
-        counts[ 2 ]++;
-        updateCounterStatus( $stop_counter, counts[ 2 ] );
+        contador[ 2 ]++;
+        actualizaEstadoContadores( $stop_contador, contador[ 2 ] );
       }
     });
  
-    function updateCounterStatus( $event_counter, new_count ) {
+    function actualizaEstadoContadores( $elementoActualizar, nuevo_Valor ) {
       // first update the status visually...
-      if ( !$event_counter.hasClass( "ui-state-hover" ) ) {
-        $event_counter.addClass( "ui-state-hover" )
+     /*  if ( !$elementoActualizar.hasClass( "ui-state-hover" ) ) {
+        $elementoActualizar.addClass( "ui-state-hover" )
           .siblings().removeClass( "ui-state-hover" );
-      }
+      }  */
       // ...then update the numbers
-      $( "span.count", $event_counter ).text( new_count );
+      $( "span.contador", $elementoActualizar ).text( nuevo_Valor );
+      
     }
   } );
   </script>
@@ -55,9 +66,9 @@
   <p>Drag me to trigger the chain of events.</p>
  
   <ul class="ui-helper-reset">
-    <li id="event-start" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-play"></span>&quot;start&quot; invoked <span class="count">0</span>x</li>
-    <li id="event-drag" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-arrow-4"></span>&quot;drag&quot; invoked <span class="count">0</span>x</li>
-    <li id="event-stop" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-stop"></span>&quot;stop&quot; invoked <span class="count">0</span>x</li>
+    <li id="evento-start" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-play"></span>&quot;start&quot; invoked <span class="contador">0</span>x</li>
+    <li id="evento-drag" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-arrow-4"></span>&quot;drag&quot; invoked <span class="contador">0</span>x</li>
+    <li id="evento-stop" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-stop"></span>&quot;stop&quot; invoked <span class="contador">0</span>x</li>
   </ul>
 </div>
  
