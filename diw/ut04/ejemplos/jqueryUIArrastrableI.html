@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Draggable - Constrain movement</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="//resources/demos/style.css">
+  <style>
+  .draggable { 
+      width: 90px; 
+      height: 90px; 
+      padding: 0.5em; 
+      float: left; 
+      margin: 0 10px 10px 0; 
+      }
+  #draggable, #draggable3,  #draggable4, #draggablex, #draggabley{ 
+      margin-bottom:20px; 
+      }
+  #draggabley { 
+      cursor: n-resize; 
+      }
+  #draggablex { 
+      cursor: e-resize; 
+      }
+  #contenedor { 
+      width: 95%; 
+      height:150px; 
+      border:2px solid #ccc; 
+      padding: 10px; }
+  h3 { 
+      clear: 
+      both; 
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#draggable1" ).draggable();
+
+    $( "#draggabley" ).draggable({ axis: "y" });
+    $( "#draggablex" ).draggable({ axis: "x" });
+ 
+    $( "#draggable3" ).draggable({ containment: "#contenedor", scroll: false });
+    $( "#draggable4" ).draggable({ containment: "parent" });
+  } );
+  </script>
+</head>
+<body>
+ <h3>Arrastrable</h3>
+ <div id="draggable1" class="draggable ui-widget-content">
+    <p>Arrastrable simple</p>
+ </div>
+<h3>Bloquear movimientos y cambiar iconos</h3>
+ 
+<div id="draggablex" class="draggable ui-widget-content">
+  <p>Solo verticalmente</p>
+</div>
+ 
+<div id="draggabley" class="draggable ui-widget-content">
+  <p>Solo horizontal</p>
+</div>
+ 
+<h3>Arrastrar por el contenedor</h3>
+<div id="contenedor">
+  <div id="draggable3" class="draggable ui-widget-content">
+    <p>Se puede arrastrar por el div padre indicado</p>
+  </div>
+ 
+  <div class="draggable ui-widget-content">
+    <p id="draggable4" class="ui-widget-header">Por el padre</p>
+  </div>
+</div>
+ 
+ 
+</body>
+</html>
