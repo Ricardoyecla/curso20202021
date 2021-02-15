@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id='info'></h2>
+    <ul>
+
+    </ul>
+    <script>
+
+        let info=document.getElementById('info');
+        let form=new FormData();
+
+        form.append("nif","12345678A");
+        form.append("tipo","nie");
+
+        form.set('tipo','dni');
+
+        for (let [dato,valor] of form){
+            console.log(`${dato}:${valor}` )
+        }
+
+        fetch('https://jorgesanchez.net/servicios/validarNIF.php',{
+            method:"POST",
+            body:form
+        })
+        .then(res=>{
+            if (res.ok){
+                return res.json()
+            } else {
+                throw new Error("los datos no llegan bien");
+            }
+        })
+        .then(listaNif=>{
+            console.log(listaNif)
+            
+        })
+        .catch(er=>{
+            console.log("error ",er);
+        });
+
+
+       
+
+        
+    </script>
+    
+</body>
+</html>
+
+
