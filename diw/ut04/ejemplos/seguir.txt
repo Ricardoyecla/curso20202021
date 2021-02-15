@@ -1,0 +1,14 @@
+$('.js-ordena-az').click(function(){
+  var listado = $('#listado');
+  var elementos = listado.children("li").get();
+  elementos.sort(function(a,b) {
+    var A = $(a).text().toUpperCase();
+    var B = $(b).text().toUpperCase();
+     return (A < B) ? -1 : (A > B) ? 1 : 0;
+  });
+  $.each(elementos, function(id, elemento) {
+    listado.append(elemento);
+  });
+});
+
+https://www.bufa.es/jquery-ordenar-alfabeticamente/

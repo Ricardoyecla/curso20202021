@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" name="files[]">
+    <p>contenido</p>
+    <button disabled>Pinta Palabra</button>
+    <script>
+
+        document.querySelector('input').addEventListener('change',leerFichero);
+        let ContenidoFichero;
+       
+        function leerFichero(e){
+                let fichero=e.target.files[0];
+                let lector=new FileReader()
+
+                lector.addEventListener('load',function(e){
+                    ContenidoFichero=e.target.result;
+                    document.querySelector('button').removeAttribute('disabled');
+                })
+                lector.readAsText(fichero)   
+        }
+
+        document.querySelector('button').addEventListener('click',()=>{
+            document.querySelector('p').textContent=ContenidoFichero;
+        })
+
+    </script>
+</body>
+</html>
