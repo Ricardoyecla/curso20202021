@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contenedor{
+            border: 2px solid orange;
+            display: flex;
+        }
+        .origen{
+            flex-basis:100%;
+            flex-grow: 1;
+            padding: 10px;;
+        }
+        .destino{
+            flex-basis:100%;
+            flex-grow:1;
+            padding: 10px;
+            background-color: pink;
+        }
+        .arrastrable{
+            background-color: paleturquoise;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="origen">
+            <div id="viajero" class="arrastrable" draggable="true">
+                Arrastrable
+            </div>
+            <div id="viajero1" class="arrastrable" draggable="true">
+                Arrastrable
+            </div>
+            <div id="viajero2" class="arrastrable" draggable="true">
+                Arrastrable
+            </div>
+        </div>
+        <div class="destino" id="destino">
+            Destino
+        </div>
+    </div>
+    <script>
+        /*
+            dragstart  
+            dragend      
+        */
+        let arrastrable=document.getElementById('viajero');
+        let arrastrables=document.getElementsByClassName('arrastrable');
+        let destino=document.getElementById('destino');
+
+        for (let a of arrastrables){
+             a.addEventListener('dragstart',ondragstart);
+        }
+       
+
+        function ondragstart(e){
+            //alert(e.target.id);
+            e.dataTransfer.setData('text/plain',e.target.id);
+            
+            e.target.style.border="2px dashed red";
+        }
+
+        destino.addEventListener('dragover',ondragover)
+        function ondragover(e){
+            e.target.innerHTML="Alguien esta por encima"
+            e.preventDefault();
+        }
+
+        destino.addEventListener('drop',ondrop);
+
+        function ondrop(e){
+            let id=e.dataTransfer.getData('text');
+            let viajero=document.getElementById(id);
+            let DondeSuelto=e.target;
+            
+            DondeSuelto.appendChild(viajero);
+            e.dataTransfer.clearData();
+        }
+
+    </script>
+</body>
+</html>
