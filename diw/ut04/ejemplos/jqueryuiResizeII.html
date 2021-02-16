@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Resizable - Synchronous resize</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  #resizable { background-position: top left; }
+  #resizable, #also { width: 150px; height: 120px; padding: 0.5em; }
+  #resizable h3, #also h3 { text-align: center; margin: 0; }
+  #also { margin-top: 1em; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#resizable" ).resizable({
+      alsoResize: "#also"
+    });
+    $( "#also" ).resizable();
+  } );
+  </script>
+</head>
+<body>
+ 
+<div id="resizable" class="ui-widget-header">
+  <h3 class="ui-state-active">Resize</h3>
+</div>
+ 
+<div id="also" class="ui-widget-content">
+  <h3 class="ui-widget-header">will also resize</h3>
+</div>
+ 
+ 
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Sortable - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="//resources/demos/style.css">
+  <style>
+    span{
+      margin-left: 0.5em;
+    }
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+ 
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <style>
+    div{
+      margin: 1em;
+    }
+  </style>
+  <script>
+  $( function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+    $('.ui-button').on('click',function(){
+      
+      var listado=$('#sortable')
+      var elementos=listado.children('li').get();
+
+      elementos.sort(function(a,b) {
+          var A = $('.valor',a).text().toUpperCase();
+          var B = $('.valor',b).text().toUpperCase();
+          return (A < B) ? -1 : (A > B) ? 1 : 0;
+      });
+
+      $.each(elementos, function(id, elemento) { 
+        listado.append(elemento); 
+      });
+    })
+  } );
+  </script>
+</head>
+<body>
+  <div>
+    <h3>Ordenar la lista</h3>
+    <button class="ui-button ui-widget ui-corner-all">Ordenar</button>
+  </div>
+  
+ 
+<ul id="sortable">
+  <li class="ui-state-default"><span class="valor">01</span></li>
+  <li class="ui-state-default"><span class="valor">2</span></li>
+  <li class="ui-state-default"><span class="valor">13</span></li>
+  <li class="ui-state-default"><span class="valor">4</span></li>
+  <li class="ui-state-default"><span class="valor">25</span></li>
+  <li class="ui-state-default"><span class="valor">6</span></li>
+  <li class="ui-state-default"><span class="valor">7</span></li>
+</ul>
+ 
+ 
+</body>
+</html>
