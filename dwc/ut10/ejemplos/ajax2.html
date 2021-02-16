@@ -22,7 +22,7 @@
                 throw new Error("los datos no llegan bien");
             }
         })
-        .then(listaNif=>{
+        .then(function(listaNif){
             let lista=document.getElementsByTagName('ul')[0];
             for (let dni of listaNif){
                 let li=document.createElement('li');
