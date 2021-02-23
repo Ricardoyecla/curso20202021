@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Antonio Vega</title>
+    <style>
+        .ordenable{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 900px;
+        }
+        .ordenable li{
+            margin: 0;
+            padding: 2px;
+            float: left;
+            width: 200px;
+            height: 160px;
+        }
+
+    </style>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function(){
+            $('.ordenable').sortable();
+        })
+
+    </script>
+
+</head>
+<body>
+    <div class="container-fluid ">
+        <!-- Cabecera-->
+        <div class="row ">
+            <div class="col-12 bg-secondary p-2">
+                <h2>Web homenaje <span class="text-white">Antonio Vega</span></h2>
+                <hr class="bg-white">
+                <div>
+                    <ul class="text-white list-inline d-flex justify-content-end">
+                        <li class="list-inline-item "><a class="text-warning" href="index.html">Inicio</a></li>
+                        <li class="list-inline-item">Discografía</li>
+                        <li class="list-inline-item text-primary">Imagen</li>
+                        <li class="list-inline-item ">Vídeos</li>
+                        <li class="list-inline-item "><a class="text-warning" href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+        <!--Cuerpo principal-->
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <div>
+                    <h2 class="text-center">Puzle</h2>
+                    <ul class="ordenable">
+                        <li><img class='img-fluid' src="img/fila-1-col-1.jpg" alt=""></li>
+                        <li><img class='img-fluid' src="img/fila-1-col-2.jpg" alt=""></li>
+                        <li><img  class='img-fluid' src="img/fila-1-col-3.jpg" alt=""></li>
+                        <li><img  class='img-fluid' src="img/fila-1-col-4.jpg" alt=""></li>
+                        <li><img  class='img-fluid' src="img/fila-2-col-1.jpg" alt=""></li>
+                        <li><img  class='img-fluid' src="img/fila-2-col-2.jpg" alt=""></li>
+                        <li><img  class='img-fluid' src="img/fila-2-col-3.jpg" alt=""></li>
+                        <li><img  class='img-fluid' src="img/fila-2-col-4.jpg" alt=""></li>
+                        <li><img  class='img-fluid' src="img/fila-3-col-1.jpg" alt=""></li>
+                        <li><img  class='img-fluid' src="img/fila-3-col-2.jpg" alt=""></li>
+                        <li><img  class='img-fluid' src="img/fila-3-col-3.jpg" alt=""></li>
+                        <li><img  class='img-fluid' src="img/fila-3-col-4.jpg" alt=""></li>
+                     </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+</body>
+</html>
