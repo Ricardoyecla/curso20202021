@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bodyParser= require('body-parser');
+const mongoose=require('mongoose')
 
 const app= express();
 
@@ -49,6 +50,13 @@ app.delete('/api/productos/:productoId',(req,res)=>{
 })
 
 
-app.listen(port,()=>{
-    console.log(`APi Rest de nOde.Js en http://locallhost:${port} `)
+mongoose.connect('mongodb://localhost:27017/tienda',(err,res)=>{
+    if (err)  {
+        console.log(`error al conectar con mongothrow ${err}`)
+    }
+    console.log('Conexión a la base de datos OK')  
+
+    app.listen(port,()=>{
+        console.log(`APi Rest de nOde.Js en http://locallhost:${port} `)
+    })
 })
