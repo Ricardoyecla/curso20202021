@@ -4,6 +4,8 @@ const express = require('express');
 const bodyParser= require('body-parser');
 const mongoose=require('mongoose')
 
+const Producto = require('./modelos/productos');
+const { restart } = require('nodemon');
 const app= express();
 
 //Asignamos a port el valor de la variable de entorno o 3000
@@ -35,8 +37,27 @@ app.get('/api/productos/:productoId',(req,res)=>{
 //Añade un producto
 //Gracias al middleware de body-parse en body tenemos los datos de la petición
 app.post('/api/productos',(req,res)=>{
+    /* console.log(req.body)
+    res.status(200).send({message:"El produco se ha recibido"}) */
+
+    console.log('POST /api/product')
     console.log(req.body)
-    res.status(200).send({message:"El produco se ha recibido"})
+
+    let producto= new Producto()
+
+    producto.nombre=req.body.nombre
+    producto.imagen=req.body.imagen
+    producto.precio=req.body.precio
+    producto.categoria=req.body.categoria
+    producto.descriccion=req.body.descriccion
+
+    producto.save((er,productoGuardado)=>{
+        if(err) res.status(500).send(`Error al guardar en mongoDB ${err}`)
+
+        restart.status(200).send({producto:productoGuardado})
+
+    })
+
 })
 
 //Modifica un producto
