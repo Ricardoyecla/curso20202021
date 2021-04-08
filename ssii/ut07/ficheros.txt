@@ -1,0 +1,11 @@
+﻿https://www.solvetic.com/tutoriales/article/8892-instalar-ssh-en-ubuntu-20-04/
+
+https://www.solvetic.com/tutoriales/article/9213-como-instalar-apache-en-ubuntu-21-04-hirsute-hippo/
+
+https://www.solvetic.com/tutoriales/article/9350-instalar-ssh-en-ubuntu-21-04/
+
+https://www.solvetic.com/tutoriales/article/9421-compartir-pantalla-ubuntu-como-usar-funcion/
+
+https://www.solvetic.com/tutoriales/article/9417-instalar-y-configurar-servidor-dhcp-en-ubuntu-21-04-y-20-04/
+
+
